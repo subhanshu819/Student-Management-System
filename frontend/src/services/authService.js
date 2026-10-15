@@ -19,9 +19,12 @@ export async function signIn(identifier, password) {
     password,
   });
 
-  // Store the JWT token
-  if (result.token) {
+  // Store the JWT token if present
+  if (result && result.token) {
     setToken(result.token);
+  } else if (!result) {
+    // If the response is null, propagate an error to be handled by the caller
+    throw new Error('Login failed: no response from server.');
   }
 
   return {
