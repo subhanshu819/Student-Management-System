@@ -1,0 +1,14 @@
+# Root .dockerignore for docker compose context
+node_modules
+.env
+.env.*
+.git
+.gitignore
+.vscode
+.idea
+dist
+build
+coverage
+*.log
+*.pem
+*.key

@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Apex University - Student Portal Registration</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with forms & container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#f8f9ff",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#dae2fd",
+            "on-tertiary-container": "#eef0ff",
+            "on-surface": "#0b1c30",
+            "secondary-fixed-dim": "#4edea3",
+            "tertiary-container": "#656d84",
+            "surface-dim": "#cbdbf5",
+            "on-secondary-fixed-variant": "#005236",
+            "outline": "#737686",
+            "primary-fixed-dim": "#b4c5ff",
+            "inverse-primary": "#b4c5ff",
+            "on-primary-fixed-variant": "#003ea8",
+            "on-primary-container": "#eeefff",
+            "background": "#f8f9ff",
+            "surface-container-high": "#dce9ff",
+            "primary-container": "#2563eb",
+            "surface-container-highest": "#d3e4fe",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#4d556b",
+            "on-error-container": "#93000a",
+            "on-surface-variant": "#434655",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-secondary-fixed": "#002113",
+            "surface-tint": "#0053db",
+            "on-background": "#0b1c30",
+            "secondary": "#006c49",
+            "on-secondary-container": "#00714d",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#131b2e",
+            "secondary-fixed": "#6ffbbe",
+            "outline-variant": "#c3c6d7",
+            "on-secondary": "#ffffff",
+            "primary": "#004ac6",
+            "on-primary-fixed": "#00174b",
+            "primary-fixed": "#dbe1ff",
+            "surface-bright": "#f8f9ff",
+            "tertiary-fixed-dim": "#bec6e0",
+            "surface-variant": "#d3e4fe",
+            "error": "#ba1a1a",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "secondary-container": "#6cf8bb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-lg": "2rem",
+            "margin": "1.5rem",
+            "gutter": "1.5rem",
+            "gutter-sm": "1rem",
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "margin-lg": "2.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Inter"],
+            "title-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "label-xs": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Header Anchor / Institutional Micro-Bar -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant px-space-md md:px-space-xl py-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="school">school</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block leading-tight">Apex University</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant block tracking-wider uppercase">Office of the Registrar</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="verified_user">verified_user</span>
+<span class="">Secure Institutional Gateway</span>
+</div>
+<a class="font-label-md text-label-md text-primary font-semibold hover:text-on-primary-fixed-variant transition-colors flex items-center gap-space-xs" href="#">
+<span class="">Help Desk</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+</a>
+</div>
+</header>
+<!-- Main Container Canvas -->
+<main class="flex-grow flex items-center justify-center px-space-md py-space-lg">
+<div class="w-full max-w-lg mx-auto px-4 sm:px-0">
+<!-- Registration Card Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-space-md md:p-space-lg transition-all">
+<!-- Institutional Crest & Header Module -->
+<div class="text-center pb-space-md border-b border-surface-container-low mb-space-md">
+<div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-surface-container-low border border-outline-variant text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[32px]" data-icon="account_balance">account_balance</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Student Portal Registration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Create your authenticated portal account for academic access
+          </p>
+<!-- Verification Notice Pill -->
+<div class="mt-space-sm inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container text-primary font-label-xs text-label-xs border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+<span class="">Requires active enrollment verification for AY 2024–25</span>
+</div>
+</div>
+<!-- Form Module -->
+<form class="space-y-space-md" onsubmit="event.preventDefault();">
+<!-- Grid Group: Full Name & Roll Number -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Full Name -->
+<div>
+<label class="block font-label-md text-label-md font-medium text-on-surface mb-1" for="fullname">
+                Full Legal Name <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-10 px-space-md rounded-lg border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors" id="fullname" placeholder="e.g. Aarav Sharma" required="" type="text">
+</div>
+</div>
+<!-- Roll Number -->
+<div>
+<label class="block font-label-md text-label-md font-medium text-on-surface mb-1" for="rollnumber">
+                Student Roll / Enrolment No. <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-10 px-space-md font-data-tabular rounded-lg border border-outline-variant bg-surface-container-lowest text-body-md text-on-surface placeholder:text-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none uppercase transition-colors" id="rollnumber" placeholder="e.g. 24CS1049" required="" type="text">
+</div>
+<p class="font-label-xs text-label-xs text-on-surface-variant mt-1">Printed on your provisional admission slip</p>
+</div>
+</div>
+<!-- Institutional Email -->
+<div>
+<label class="block font-label-md text-label-md font-medium text-on-surface mb-1" for="email">
+              Institutional Email ID <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute left-space-md text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span>
+</span>
+<input class="w-full h-10 pl-11 pr-space-md rounded-lg border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors" id="email" placeholder="e.g. rollno@apex.edu.in" required="" type="email">
+</div>
+<p class="font-label-xs text-label-xs text-on-surface-variant mt-1">Must end in institutional domain <span class="font-semibold text-primary">@apex.edu.in</span></p>
+</div>
+<!-- Academic Department Dropdown -->
+<div>
+<label class="block font-label-md text-label-md font-medium text-on-surface mb-1" for="department">
+              Academic Department <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-10 px-space-md pr-10 rounded-lg border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none appearance-none transition-colors" id="department" required="">
+<option disabled="" selected="" value="">Select Department / Branch</option>
+<option value="cs">Computer Science &amp; Engineering (CSE)</option>
+<option value="aids">Artificial Intelligence &amp; Data Science (AI&amp;DS)</option>
+<option value="ece">Electronics &amp; Communication Engineering (ECE)</option>
+<option value="mech">Mechanical Engineering (ME)</option>
+<option value="civil">Civil &amp; Environmental Engineering (CEE)</option>
+<option value="mgmt">School of Management &amp; Business Analytics</option>
+</select>
+<span class="absolute right-space-md top-2.5 pointer-events-none text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="expand_more">expand_more</span>
+</span>
+</div>
+</div>
+<!-- Password with Strength Meter & Toggle -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="block font-label-md text-label-md font-medium text-on-surface" for="password">
+                Create Portal Password <span class="text-error">*</span>
+</label>
+<span class="font-label-xs text-label-xs font-semibold text-on-surface-variant" id="strength-label">Fair</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-10 pl-space-md pr-11 rounded-lg border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors" id="password" placeholder="At least 8 characters with symbol &amp; number" required="" type="password" value="Academic2024!">
+<button aria-label="Toggle password visibility" class="absolute right-space-md text-on-surface-variant hover:text-on-surface transition-colors flex items-center" id="toggle-password" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Password Strength Indicator Bars -->
+<div class="grid grid-cols-4 gap-1.5 mt-2">
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-outline-variant"></div>
+</div>
+<div class="flex items-center gap-space-xs mt-1.5 text-secondary">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-xs text-label-xs">Contains uppercase, numeral, and standard special character</span>
+</div>
+</div>
+<!-- Confirm Password with Match Validation -->
+<div>
+<label class="block font-label-md text-label-md font-medium text-on-surface mb-1" for="confirm-password">
+              Confirm Password <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full h-10 pl-space-md pr-11 rounded-lg border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors" id="confirm-password" placeholder="Re-enter your portal password" required="" type="password" value="Academic2024!">
+<span class="absolute right-space-md text-secondary flex items-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+</span>
+</div>
+<p class="font-label-xs text-label-xs text-secondary mt-1 flex items-center gap-1">
+<span class="">Passwords match correctly</span>
+</p>
+</div>
+<!-- Terms & Academic Honor Code Checkbox -->
+<div class="pt-space-xs">
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low border border-outline-variant">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container" id="honor-code" required="" type="checkbox">
+</div>
+<label class="font-body-sm text-body-sm text-on-surface" for="honor-code">
+                I hereby accept the <a class="font-semibold text-primary hover:underline" href="#">Apex University Academic Honor Code</a>, Acceptable IT Policy, and certify that all enrollment credentials provided are accurate.
+              </label>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-space-xs">
+<button class="w-full h-11 py-2.5 px-4 bg-primary-container hover:bg-primary active:scale-[0.99] text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm transition-all duration-150 flex items-center justify-center gap-space-sm cursor-pointer" type="submit">
+<span class="">Complete Student Registration</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Divider & Institutional Switcher -->
+<div class="mt-space-lg pt-space-md border-t border-surface-container-low text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Already have an institutional account? 
+            <a class="font-semibold text-primary hover:text-on-primary-fixed-variant transition-colors ml-1 inline-flex items-center gap-0.5" href="#">
+<span class="">Log in here</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="login">login</span>
+</a>
+</p>
+</div>
+</div>
+<!-- Security & Accreditations Badge Footer Card -->
+<div class="mt-space-md text-center">
+<div class="inline-flex items-center justify-center gap-space-md text-on-surface-variant font-label-xs text-label-xs">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="lock">lock</span>
+            256-bit SSL Enrolment Guard
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="">NAAC Grade A++ Accredited</span>
+<span class="text-outline-variant">•</span>
+<span class="">AISHE Code: U-0129</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Institutional Footer Component -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant px-space-md md:px-space-xl py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-xs">
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+      © 2024 Apex University. Directorate of Academic Admissions &amp; Records. All rights reserved.
+    </div>
+<div class="flex items-center gap-space-md font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Privacy Charter</a>
+<a class="hover:text-primary transition-colors" href="#">Honor Code Guidelines</a>
+<a class="hover:text-primary transition-colors" href="#">Campus Registrar Support</a>
+</div>
+</footer>
+<!-- Vanilla Interaction Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('toggle-password');
+      const passwordInput = document.getElementById('password');
+      
+      if (toggleBtn && passwordInput) {
+        toggleBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.getAttribute('type') === 'password';
+          passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+          const icon = toggleBtn.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+          }
+        });
+      }
+    });
+  </script>
+
+
+</body></html>

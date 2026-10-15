@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Apex University - Student Management System Login</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#f8f9ff",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#dae2fd",
+            "on-tertiary-container": "#eef0ff",
+            "on-surface": "#0b1c30",
+            "secondary-fixed-dim": "#4edea3",
+            "tertiary-container": "#656d84",
+            "surface-dim": "#cbdbf5",
+            "on-secondary-fixed-variant": "#005236",
+            "outline": "#737686",
+            "primary-fixed-dim": "#b4c5ff",
+            "inverse-primary": "#b4c5ff",
+            "on-primary-fixed-variant": "#003ea8",
+            "on-primary-container": "#eeefff",
+            "background": "#f8f9ff",
+            "surface-container-high": "#dce9ff",
+            "primary-container": "#2563eb",
+            "surface-container-highest": "#d3e4fe",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#4d556b",
+            "on-error-container": "#93000a",
+            "on-surface-variant": "#434655",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-secondary-fixed": "#002113",
+            "surface-tint": "#0053db",
+            "on-background": "#0b1c30",
+            "secondary": "#006c49",
+            "on-secondary-container": "#00714d",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#131b2e",
+            "secondary-fixed": "#6ffbbe",
+            "outline-variant": "#c3c6d7",
+            "on-secondary": "#ffffff",
+            "primary": "#004ac6",
+            "on-primary-fixed": "#00174b",
+            "primary-fixed": "#dbe1ff",
+            "surface-bright": "#f8f9ff",
+            "tertiary-fixed-dim": "#bec6e0",
+            "surface-variant": "#d3e4fe",
+            "error": "#ba1a1a",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "secondary-container": "#6cf8bb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-lg": "2rem",
+            "margin": "1.5rem",
+            "gutter": "1.5rem",
+            "gutter-sm": "1rem",
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "margin-lg": "2.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Inter"],
+            "title-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "label-xs": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Architectural Top Bar (Institutional Brand Anchor) -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant py-space-sm px-space-md sm:px-space-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-surface tracking-tight">Apex University</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant tracking-wider">OFFICE OF THE REGISTRAR</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-1 rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="">Identity Service Online</span>
+</div>
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline flex items-center gap-1" href="#">
+<span class="">Help &amp; Support</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</header>
+<!-- Central Authentication Viewport -->
+<main class="flex-1 flex items-center justify-center p-space-md sm:p-space-xl my-auto">
+<div class="w-full max-w-md mx-auto px-4 sm:px-0">
+<!-- Primary Card Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-space-lg sm:p-space-xl relative overflow-hidden">
+<!-- Subtle Institutional Top Accent Strip -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary-container"></div>
+<!-- Academic Seal & Header Section -->
+<div class="text-center mb-space-lg">
+<div class="mx-auto mb-space-sm w-16 h-16 rounded-full bg-surface-container-low border border-outline-variant flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Student &amp; Faculty Portal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Sign in with your institutional credentials to continue</p>
+</div>
+<!-- System Notification / Context Alert Banner -->
+<div class="mb-space-lg bg-surface-container-low border border-outline-variant rounded-lg p-space-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="flex-1">
+<p class="font-label-sm text-label-sm font-semibold text-on-surface">Fall 2024 Enrollment Open</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-0.5">Use your institutional ID (e.g. <span class="font-mono text-on-surface">s10294</span>) or registered <span class="font-mono text-on-surface">@apex.edu.in</span> email address.</p>
+</div>
+</div>
+<!-- Login Form -->
+<form class="space-y-space-md" onsubmit="event.preventDefault();">
+<!-- Institutional Identifier Input -->
+<div>
+<label class="block font-label-md text-label-md font-semibold text-on-surface mb-1.5" for="institutional-email">
+              College Email or Student ID
+            </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-lg">badge</span>
+</div>
+<input class="w-full h-11 pl-10 pr-3 bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all duration-150" id="institutional-email" name="institutional-email" placeholder="name@apex.edu.in or 8-digit ID" required="" type="text">
+</div>
+<p class="mt-1 font-body-sm text-body-sm text-on-surface-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">help_outline</span>
+              For dual enrollment, use departmental primary ID.
+            </p>
+</div>
+<!-- Password Input -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block font-label-md text-label-md font-semibold text-on-surface" for="auth-password">
+                Password
+              </label>
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:text-primary-container hover:underline transition-colors duration-150" href="#">
+                Forgot Password?
+              </a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<input class="w-full h-11 pl-10 pr-10 bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all duration-150" id="auth-password" name="password" placeholder="Enter your security password" required="" type="password">
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface transition-colors" id="toggle-password-btn" onclick="
+                  const input = document.getElementById('auth-password');
+                  const icon = this.querySelector('.material-symbols-outlined');
+                  if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.textContent = 'visibility_off';
+                  } else {
+                    input.type = 'password';
+                    icon.textContent = 'visibility';
+                  }
+                " type="button">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me Checkbox -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-0 transition-colors" name="remember" type="checkbox">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Remember me for 30 days</span>
+</label>
+</div>
+<!-- Primary Submit Action -->
+<div class="pt-2">
+<button class="w-full h-11 py-2.5 px-4 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm transition-all duration-150 active:scale-[0.99] flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-lg">login</span>
+<span class="">Sign In to Dashboard</span>
+</button>
+</div>
+</form>
+<!-- Divider -->
+<div class="relative my-space-lg">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center text-xs">
+<span class="bg-surface-container-lowest px-3 font-label-xs text-label-xs text-on-surface-variant">NEW ADMISSIONS &amp; REGISTRATION</span>
+</div>
+</div>
+<!-- Registration Link -->
+<div class="text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Don't have an active account? 
+            <a class="font-semibold text-primary hover:text-primary-container hover:underline ml-1 inline-flex items-center gap-0.5" href="#">
+<span class="">New student registration</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</p>
+</div>
+<!-- Security Stamp & Encryption Banner -->
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/60 flex items-center justify-center gap-space-sm text-on-surface-variant">
+<div class="flex items-center gap-1 font-label-xs text-label-xs text-secondary font-semibold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="">256-bit SSL Academic Encryption</span>
+</div>
+<span class="text-outline-variant">•</span>
+<span class="font-label-xs text-label-xs text-outline">FERPA Compliant</span>
+</div>
+</div>
+<!-- Quick Assistance Callout Box -->
+<div class="mt-space-md text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Need access assistance? Contact the IT Helpdesk at <a class="text-primary hover:underline font-medium" href="mailto:support@apex.edu.in">support@apex.edu.in</a> or call Ext. 4090.
+        </p>
+</div>
+</div>
+</main>
+<!-- Architectural Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant py-space-md px-space-md sm:px-space-xl">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-space-sm text-center sm:text-left">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Apex University. All rights reserved.</span>
+<span class="hidden sm:inline text-outline-variant">|</span>
+<span class="hidden sm:inline font-label-sm text-label-sm font-semibold text-primary">Academic Year 2024–25</span>
+</div>
+<div class="flex items-center gap-space-md font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-primary hover:underline transition-colors" href="#">Privacy Policy</a>
+<span class="text-outline-variant">•</span>
+<a class="hover:text-primary hover:underline transition-colors" href="#">Acceptable Use Policy</a>
+<span class="text-outline-variant">•</span>
+<a class="hover:text-primary hover:underline transition-colors" href="#">Campus Portal Directory</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>
