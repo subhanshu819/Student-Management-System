@@ -11,7 +11,9 @@
  *   const { data } = await api.post('/auth/login', { email, password });
  */
 
-const API_BASE = '/api';
+const API_BASE = process.env.NODE_ENV === 'production'
+  ? 'https://apex-sms-backend.onrender.com/api'
+  : '/api';
 
 // ── Token helpers ───────────────────────────────────────
 

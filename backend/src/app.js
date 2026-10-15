@@ -19,15 +19,17 @@ if (env.isProduction) {
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, or Postman)
+      if (process.env.NODE_ENV === 'production') {
+        // In production, allow the deployed frontend origin (or any) by reflecting the request origin
+        return callback(null, true);
+      }
+      // Existing whitelist logic for development
       if (!origin) return callback(null, true);
-
       const configuredOrigins = env.CORS_ORIGIN
         ? env.CORS_ORIGIN.split(',').map(o => o.trim()).filter(Boolean)
         : [];
       const defaultAllowed = ['http://localhost', 'http://localhost:80', 'http://localhost:5173', 'http://127.0.0.1:5173'];
       const allowedOrigins = [...new Set([...configuredOrigins, ...defaultAllowed])];
-
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
