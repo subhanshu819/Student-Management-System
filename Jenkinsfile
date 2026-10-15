@@ -4,8 +4,6 @@ pipeline {
     options {
         // Stop after 30 minutes to prevent hung builds
         timeout(time: 30, unit: 'MINUTES')
-        // Colorize console output
-        ansiColor('xterm')
         // Keep only recent 20 builds to conserve disk space
         buildDiscarder(logRotator(numToKeepStr: '20'))
         // Do not allow concurrent builds on the same branch
@@ -25,7 +23,7 @@ pipeline {
         // ── 1. SOURCE CHECKOUT ──
         stage('Checkout Source') {
             steps {
-                echo "===> [Stage 1/6] Checking out repository source code..."
+                echo "===> [Stage 1/7] Checking out repository source code..."
                 checkout scm
                 script {
                     def commitHash = env.GIT_COMMIT ? env.GIT_COMMIT.take(7) : 'local'
@@ -34,32 +32,32 @@ pipeline {
             }
         }
 
-        // ── 2. DEPENDENCY INSTALLATION ──
+        // ── 2. DEPENDENCY INSTALLATION (PARALLEL DECLARATIVE) ──
         stage('Install Dependencies') {
-            steps {
-                echo "===> [Stage 2/6] Installing dependencies reproducibly with npm ci..."
-                // Use parallel execution for both frontend & backend to speed up build
-                parallel(
-                    'Backend Dependencies': {
+            parallel {
+                stage('Backend Dependencies') {
+                    steps {
+                        echo "Installing backend dependencies (clean install)..."
                         dir('backend') {
-                            echo "Installing backend dependencies (clean install)..."
-                            bat 'npm ci'
-                        }
-                    },
-                    'Frontend Dependencies': {
-                        dir('frontend') {
-                            echo "Installing frontend dependencies (clean install)..."
                             bat 'npm ci'
                         }
                     }
-                )
+                }
+                stage('Frontend Dependencies') {
+                    steps {
+                        echo "Installing frontend dependencies (clean install)..."
+                        dir('frontend') {
+                            bat 'npm ci'
+                        }
+                    }
+                }
             }
         }
 
         // ── 3. STATIC ANALYSIS & LINTING ──
         stage('Static Analysis & Lint') {
             steps {
-                echo "===> [Stage 3/6] Running code quality and linting checks..."
+                echo "===> [Stage 3/7] Running code quality and linting checks..."
                 dir('frontend') {
                     // Runs oxlint as configured in frontend/package.json
                     bat 'npm run lint'
@@ -70,7 +68,7 @@ pipeline {
         // ── 4. AUTOMATED BACKEND TESTS ──
         stage('Automated Tests') {
             steps {
-                echo "===> [Stage 4/6] Running automated unit & integration tests..."
+                echo "===> [Stage 4/7] Running automated unit & integration tests..."
                 dir('backend') {
                     // Executes built-in Node test runner across health, auth, role-authorization and student CRUD
                     // Tests run in-memory using mockDb; zero production database interference
@@ -82,7 +80,7 @@ pipeline {
         // ── 5. FRONTEND PRODUCTION BUILD ──
         stage('Build Frontend') {
             steps {
-                echo "===> [Stage 5/6] Compiling React + Vite + Tailwind CSS production bundle..."
+                echo "===> [Stage 5/7] Compiling React + Vite + Tailwind CSS production bundle..."
                 dir('frontend') {
                     bat 'npm run build'
                 }
@@ -92,7 +90,7 @@ pipeline {
         // ── 6. CONTAINER IMAGE BUILD ──
         stage('Build Docker Images') {
             steps {
-                echo "===> [Stage 6/6] Building multi-stage container images..."
+                echo "===> [Stage 6/7] Building multi-stage container images..."
                 // Build Backend Docker Image
                 bat "docker build -t %IMAGE_BACKEND_NAME%:%IMAGE_TAG% -t %IMAGE_BACKEND_NAME%:latest ./backend"
 
