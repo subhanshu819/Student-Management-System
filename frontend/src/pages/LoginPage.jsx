@@ -241,7 +241,7 @@ export default function LoginPage() {
           <div className="flex items-center gap-2">
             <span className="text-label-sm text-[#434655]">© 2024 Apex University. All rights reserved.</span>
             <span className="hidden sm:inline text-[#c3c6d7]">|</span>
-            <span className="hidden sm:inline text-label-sm font-semibold text-[#004ac6]">Academic Year 2024–25</span>
+            <span className="hidden sm:inline text-label-sm font-semibold text-[#004ac6]">Academic Year 2026–27</span>
           </div>
           <div className="flex items-center gap-4 text-label-sm text-[#434655]">
             <a href="#" className="hover:text-[#004ac6] hover:underline">Privacy Policy</a>

@@ -128,13 +128,13 @@ export default function AddStudentPage() {
           <div>
             <h1 className="text-headline-lg text-[#0b1c30] font-bold tracking-tight">Register New Student</h1>
             <p className="text-body-md text-[#434655] mt-1">
-              Enter student personal, institutional, and academic enrollment details for AY 2024–25.
+              Enter student personal, institutional, and academic enrollment details for AY 2026–27.
             </p>
           </div>
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e5eeff] text-label-xs text-[#004ac6] font-semibold border border-[#c3c6d7]">
               <span className="w-2 h-2 rounded-full bg-[#004ac6] animate-pulse"></span>
-              Admissions Session 2024–25
+              Admissions Session 2026–27
             </span>
           </div>
         </div>

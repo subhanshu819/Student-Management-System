@@ -128,12 +128,12 @@ export default function DashboardPage() {
               </span>
             </div>
             <p className="text-body-md text-[#434655]">
-              Apex University Student Administration Portal — Academic Year 2024-25
+              Apex University Student Administration Portal — Academic Year 2026-27
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
               <span className="text-label-sm px-3 py-1 rounded-full border border-[#c3c6d7]"
                 style={{ backgroundColor: '#eff4ff' }}>
-                Odd Semester 2024–25
+                Odd Semester 2026–27
               </span>
               <span className="text-label-sm px-3 py-1 rounded-full border border-[#c3c6d7]"
                 style={{ backgroundColor: '#eff4ff' }}>

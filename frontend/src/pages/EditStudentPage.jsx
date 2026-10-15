@@ -208,7 +208,7 @@ export default function EditStudentPage() {
           <div className="space-y-0.5">
             <h2 className="text-title-md font-semibold text-[#0b1c30]">Enrollment Notice &amp; Audit Advisory</h2>
             <p className="text-body-sm text-[#434655] leading-relaxed">
-              Student is currently enrolled in AY 2024–25 (Odd Semester). Changes to Department or Roll Number require Registrar re-verification.
+              Student is currently enrolled in AY 2026–27 (Odd Semester). Changes to Department or Roll Number require Registrar re-verification.
             </p>
           </div>
         </div>

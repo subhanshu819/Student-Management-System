@@ -140,7 +140,7 @@ export default function RegisterPage() {
               <span className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-xs text-[#004ac6] border border-[#2563eb]"
                 style={{ backgroundColor: '#eff4ff' }}>
                 <Icon name="info" size={13} />
-                Requires active enrollment verification for AY 2024-25
+                Requires active enrollment verification for AY 2026-27
               </span>
             </div>
 

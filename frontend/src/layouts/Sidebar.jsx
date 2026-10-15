@@ -100,7 +100,7 @@ export default function Sidebar({ isOpen, onClose }) {
                   <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: '#006c49' }} />
                 </span>
               </div>
-              <span className="text-label-md font-semibold text-[#0b1c30] block">Odd Semester 2024–25</span>
+              <span className="text-label-md font-semibold text-[#0b1c30] block">Odd Semester 2026–27</span>
               <span className="text-label-sm text-[#434655] block">Week 11 (Registrar Active)</span>
             </div>
 

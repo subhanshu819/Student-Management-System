@@ -13,7 +13,7 @@ pipeline {
     environment {
         // Application Metadata
         APP_NAME           = 'student-management-system'
-        NODE_ENV           = 'production'
+        CI                 = 'true'
         IMAGE_BACKEND_NAME = 'apex-sms-backend'
         IMAGE_FRONTEND_NAME= 'apex-sms-frontend'
         IMAGE_TAG          = "${env.BUILD_NUMBER}-${env.GIT_COMMIT ? env.GIT_COMMIT.take(7) : 'latest'}"
@@ -37,17 +37,17 @@ pipeline {
             parallel {
                 stage('Backend Dependencies') {
                     steps {
-                        echo "Installing backend dependencies (clean install)..."
+                        echo "Installing backend dependencies (clean install with devDependencies)..."
                         dir('backend') {
-                            bat 'npm ci'
+                            bat 'npm ci --include=dev'
                         }
                     }
                 }
                 stage('Frontend Dependencies') {
                     steps {
-                        echo "Installing frontend dependencies (clean install)..."
+                        echo "Installing frontend dependencies (clean install with devDependencies)..."
                         dir('frontend') {
-                            bat 'npm ci'
+                            bat 'npm ci --include=dev'
                         }
                     }
                 }
@@ -57,9 +57,9 @@ pipeline {
         // ── 3. STATIC ANALYSIS & LINTING ──
         stage('Static Analysis & Lint') {
             steps {
-                echo "===> [Stage 3/7] Running code quality and linting checks..."
+                echo "===> [Stage 3/7] Running code quality and linting checks via Oxlint..."
                 dir('frontend') {
-                    // Runs oxlint as configured in frontend/package.json
+                    // Executes locally installed oxlint binary via npm run lint
                     bat 'npm run lint'
                 }
             }
@@ -99,11 +99,15 @@ pipeline {
             }
         }
 
-        // ── 7. DEPLOYMENT (SAFELY SKIPPED FOR CI RELIABILITY) ──
+        // ── 7. DEPLOYMENT (SAFELY SKIPPED FOR CI INTEGRITY) ──
         stage('Deploy') {
             steps {
-                echo "===> [Stage 7/7] Deployment & publishing skipped for initial CI pipeline stability."
-                bat 'echo Deployment and Docker Hub publishing are disabled. Focus is on reliable CI validation.'
+                echo "===> [Stage 7/7] Deployment skipped: Continuous Integration validation only."
+                echo "To enable Continuous Deployment (CD), configure:"
+                echo "  1. Docker Registry credentials (e.g., Docker Hub or AWS ECR)"
+                echo "  2. Target deployment host or Kubernetes cluster configuration"
+                echo "  3. Production environment secret bindings (Atlas MONGODB_URI, JWT_SECRET)"
+                bat 'echo CI checks passed successfully. Deployment stage safely skipped.'
             }
         }
     }
@@ -118,10 +122,10 @@ pipeline {
             echo "SUCCESS: Pipeline completed successfully! Build #${env.BUILD_NUMBER} is green."
         }
         unstable {
-            echo "WARNING: Build #${env.BUILD_NUMBER} marked as UNSTABLE (e.g. test warnings)."
+            echo "WARNING: Build #${env.BUILD_NUMBER} marked as UNSTABLE (e.g. warnings present)."
         }
         failure {
-            echo "FAILURE: Build #${env.BUILD_NUMBER} FAILED during stage '${STAGE_NAME ?: 'Unknown'}'. Please check the console output above for error logs."
+            echo "FAILURE: Build #${env.BUILD_NUMBER} FAILED during stage '${STAGE_NAME ?: 'Unknown'}'. Check console logs above for diagnostics."
         }
         aborted {
             echo "ABORTED: Build #${env.BUILD_NUMBER} was aborted by user or timeout."
