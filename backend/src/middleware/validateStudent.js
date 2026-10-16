@@ -20,7 +20,20 @@ export function validateObjectId(req, res, next) {
  * Validates request payload when creating a new student record
  */
 export function validateCreateStudent(req, res, next) {
-  const { rollNumber, fullName, email, department, academicYear, cgpa, attendance, status, gender } = req.body;
+  // Normalize fields before validation
+  const {
+    rollNumber,
+    fullName,
+    email: rawEmail,
+    department: rawDept,
+    academicYear,
+    cgpa,
+    attendance,
+    status,
+    gender,
+  } = req.body;
+  const email = typeof rawEmail === 'string' ? rawEmail.trim().toLowerCase() : rawEmail;
+  const department = typeof rawDept === 'string' ? rawDept.trim().toLowerCase() : rawDept;
   const errors = [];
 
   // Required fields
@@ -34,7 +47,7 @@ export function validateCreateStudent(req, res, next) {
 
   if (!email || typeof email !== 'string' || !email.trim()) {
     errors.push('Institutional email address (email) is required');
-  } else if (!EMAIL_REGEX.test(email.trim())) {
+  } else if (!EMAIL_REGEX.test(email)) {
     errors.push('Please provide a valid email address');
   }
 
